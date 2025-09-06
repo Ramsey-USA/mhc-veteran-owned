@@ -165,6 +165,15 @@ class ProjectsManager {
                 project.category === this.currentFilter
             );
         }
+
+        // Update gallery state
+        const gallery = document.getElementById('projectsGallery');
+        if (this.filteredProjects.length === 0) {
+            gallery.classList.add('empty');
+            gallery.classList.remove('loading');
+        } else {
+            gallery.classList.remove('empty', 'loading');
+        }
     }
 
     setupLoadMore() {
@@ -177,8 +186,15 @@ class ProjectsManager {
     }
 
     loadMoreProjects() {
-        this.currentPage++;
-        this.renderProjects(true);
+        const gallery = document.getElementById('projectsGallery');
+        gallery.classList.add('loading');
+        
+        // Simulate loading delay
+        setTimeout(() => {
+            this.currentPage++;
+            this.renderProjects(true);
+            gallery.classList.remove('loading');
+        }, 1000);
     }
 
     renderProjects(append = false) {
@@ -242,6 +258,9 @@ class ProjectsManager {
     animateProjects() {
         const projects = document.querySelectorAll('.project-item');
         projects.forEach((project, index) => {
+            // Remove any existing classes
+            project.classList.remove('hidden', 'show');
+            
             project.style.opacity = '0';
             project.style.transform = 'translateY(30px)';
             
@@ -249,6 +268,7 @@ class ProjectsManager {
                 project.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
                 project.style.opacity = '1';
                 project.style.transform = 'translateY(0)';
+                project.classList.add('show');
             }, index * 100);
         });
     }
@@ -260,6 +280,9 @@ class ProjectsManager {
 
 // Global functions for project interactions
 function view3DProject(projectId) {
+    // Close modal if open
+    closeProjectModal();
+    
     // Redirect to 3D viewer with specific project
     window.location.href = `project-viewer.html?project=${projectId}`;
 }
@@ -268,53 +291,55 @@ function showProjectDetails(projectId) {
     const project = window.projectsManager.getProjectById(projectId);
     if (!project) return;
 
-    // Create modal with project details
-    const modal = document.createElement('div');
-    modal.className = 'project-modal';
-    modal.innerHTML = `
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>${project.title}</h2>
-                <button class="modal-close" onclick="closeProjectModal()">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div class="project-image-large">${project.image}</div>
-                <div class="project-info-detailed">
-                    <p><strong>Location:</strong> ${project.location}</p>
-                    <p><strong>Completed:</strong> ${project.year}</p>
-                    <p><strong>Size:</strong> ${project.size}</p>
-                    <p><strong>Category:</strong> ${project.category.charAt(0).toUpperCase() + project.category.slice(1)}</p>
-                    <p><strong>Description:</strong> ${project.description}</p>
-                    <div class="project-features-detailed">
-                        <h4>Key Features:</h4>
-                        <ul>
-                            ${project.features.map(feature => `<li>${feature}</li>`).join('')}
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-primary" onclick="view3DProject('${project.id}')">View in 3D</button>
-                <button class="btn btn-secondary" onclick="window.location.href='estimator.html?type=${project.category}'">Get Similar Estimate</button>
-            </div>
+    // Create and show modal
+    const modal = document.getElementById('projectModal');
+    if (!modal) return;
+
+    // Update modal content
+    document.getElementById('modalProjectTitle').textContent = project.title;
+    document.getElementById('modalProjectImage').textContent = project.image;
+    
+    const modalInfo = document.getElementById('modalProjectInfo');
+    modalInfo.innerHTML = `
+        <p><strong>Location:</strong> ${project.location}</p>
+        <p><strong>Completed:</strong> ${project.year}</p>
+        <p><strong>Size:</strong> ${project.size}</p>
+        <p><strong>Category:</strong> ${project.category.charAt(0).toUpperCase() + project.category.slice(1)}</p>
+        <p><strong>Description:</strong> ${project.description}</p>
+        <div class="project-features-detailed">
+            <h4>Key Features:</h4>
+            <ul>
+                ${project.features.map(feature => `<li>${feature}</li>`).join('')}
+            </ul>
         </div>
     `;
 
-    document.body.appendChild(modal);
-    
-    // Animate modal in
+    // Update footer buttons
+    document.getElementById('modalView3D').onclick = () => view3DProject(project.id);
+    document.getElementById('modalGetEstimate').onclick = () => {
+        window.location.href = `estimator.html?type=${project.category}`;
+    };
+
+    // Show modal
+    modal.style.display = 'flex';
     setTimeout(() => {
         modal.classList.add('active');
     }, 10);
+
+    // Prevent body scroll
+    document.body.style.overflow = 'hidden';
 }
 
 function closeProjectModal() {
-    const modal = document.querySelector('.project-modal');
+    const modal = document.getElementById('projectModal');
     if (modal) {
         modal.classList.remove('active');
         setTimeout(() => {
-            document.body.removeChild(modal);
+            modal.style.display = 'none';
         }, 300);
+        
+        // Restore body scroll
+        document.body.style.overflow = '';
     }
 }
 
@@ -329,3 +354,23 @@ document.addEventListener('DOMContentLoaded', () => {
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = ProjectsManager;
 }
+
+// Add keyboard navigation for modal
+document.addEventListener('keydown', (e) => {
+    const modal = document.getElementById('projectModal');
+    if (modal && modal.classList.contains('active')) {
+        if (e.key === 'Escape') {
+            closeProjectModal();
+        }
+    }
+});
+
+// Close modal when clicking outside
+document.addEventListener('click', (e) => {
+    const modal = document.getElementById('projectModal');
+    if (modal && modal.classList.contains('active')) {
+        if (e.target.classList.contains('modal-overlay')) {
+            closeProjectModal();
+        }
+    }
+});
