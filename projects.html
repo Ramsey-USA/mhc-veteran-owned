@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Portfolio - MH Construction</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Saira:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/chatbot.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h1>MH Construction</h1>
+                <span class="veteran-badge">Veteran Owned</span>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="projects.html" class="nav-link active">Projects</a>
+                <a href="estimator.html" class="nav-link cta-link">Get Estimate</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Projects Hero -->
+    <section class="projects-hero">
+        <div class="container">
+            <h1>Our Project Portfolio</h1>
+            <p>Explore our completed construction projects showcasing veteran-owned excellence across commercial, medical, religious, industrial, and specialty buildings.</p>
+            <div class="portfolio-stats">
+                <div class="portfolio-stat">
+                    <span class="stat-number">500+</span>
+                    <span class="stat-label">Projects Completed</span>
+                </div>
+                <div class="portfolio-stat">
+                    <span class="stat-number">$50M+</span>
+                    <span class="stat-label">Total Value Delivered</span>
+                </div>
+                <div class="portfolio-stat">
+                    <span class="stat-number">3</span>
+                    <span class="stat-label">States Served</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Filters -->
+    <section class="project-filters">
+        <div class="container">
+            <h2>Filter Projects</h2>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="commercial">Commercial</button>
+                <button class="filter-btn" data-filter="medical">Medical</button>
+                <button class="filter-btn" data-filter="religious">Religious</button>
+                <button class="filter-btn" data-filter="industrial">Industrial</button>
+                <button class="filter-btn" data-filter="winery">Winery</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Projects -->
+    <section class="featured-projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-item featured" data-category="commercial">
+                    <div class="project-image">
+                        <div class="image-placeholder">🏢</div>
+                        <div class="project-overlay">
+                            <button class="view-3d-btn" onclick="view3DProject('commercial-office')">View in 3D</button>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Pacific Northwest Office Complex</h3>
+                        <p class="project-location">📍 Pasco, WA</p>
+                        <p class="project-description">25,000 sq ft modern commercial building featuring energy-efficient systems and flexible workspace design.</p>
+                        <div class="project-details">
+                            <span class="detail-item">📅 Completed 2023</span>
+                            <span class="detail-item">🏗️ 25,000 sq ft</span>
+                            <span class="detail-item">⚡ LEED Certified</span>
+                        </div>
+                        <div class="project-highlights">
+                            <span class="highlight">Smart Building Tech</span>
+                            <span class="highlight">Energy Efficient</span>
+                            <span class="highlight">Modern Design</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-item featured" data-category="medical">
+                    <div class="project-image">
+                        <div class="image-placeholder">🏥</div>
+                        <div class="project-overlay">
+                            <button class="view-3d-btn" onclick="view3DProject('medical-center')">View in 3D</button>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Columbia Medical Center</h3>
+                        <p class="project-location">📍 Kennewick, WA</p>
+                        <p class="project-description">State-of-the-art healthcare facility with specialized medical equipment integration and patient-focused design.</p>
+                        <div class="project-details">
+                            <span class="detail-item">📅 Completed 2024</span>
+                            <span class="detail-item">🏗️ 18,000 sq ft</span>
+                            <span class="detail-item">🏥 Full Medical Suite</span>
+                        </div>
+                        <div class="project-highlights">
+                            <span class="highlight">Healthcare Compliant</span>
+                            <span class="highlight">Advanced HVAC</span>
+                            <span class="highlight">Patient Centered</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-item featured" data-category="religious">
+                    <div class="project-image">
+                        <div class="image-placeholder">⛪</div>
+                        <div class="project-overlay">
+                            <button class="view-3d-btn" onclick="view3DProject('church-sanctuary')">View in 3D</button>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Trinity Community Church</h3>
+                        <p class="project-location">📍 Richland, WA</p>
+                        <p class="project-description">Beautiful sanctuary with modern acoustics, lighting systems, and multi-purpose community spaces.</p>
+                        <div class="project-details">
+                            <span class="detail-item">📅 Completed 2023</span>
+                            <span class="detail-item">🏗️ 12,000 sq ft</span>
+                            <span class="detail-item">🎵 Acoustic Optimized</span>
+                        </div>
+                        <div class="project-highlights">
+                            <span class="highlight">Sacred Architecture</span>
+                            <span class="highlight">Community Focused</span>
+                            <span class="highlight">Multi-Purpose</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- All Projects Gallery -->
+    <section class="all-projects">
+        <div class="container">
+            <h2 class="section-title">Complete Portfolio</h2>
+            <div class="projects-gallery" id="projectsGallery">
+                <!-- Projects will be loaded dynamically -->
+            </div>
+            <div class="load-more-container">
+                <button class="btn btn-secondary" id="loadMoreProjects">Load More Projects</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="projects-cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Start Your Project?</h2>
+                <p>Join our portfolio of satisfied clients with your next construction project.</p>
+                <div class="cta-buttons">
+                    <a href="estimator.html" class="btn btn-primary">Get Your Estimate</a>
+                    <a href="contact.html" class="btn btn-secondary">Schedule Consultation</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>MH Construction</h3>
+                    <p>Revolutionary construction excellence with military precision and innovative technology.</p>
+                    <div class="veteran-badge">Veteran Owned & Operated</div>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <a href="services.html">Commercial Construction</a>
+                    <a href="services.html">Medical Facilities</a>
+                    <a href="services.html">Religious Buildings</a>
+                    <a href="services.html">Industrial Projects</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Innovation</h4>
+                    <a href="estimator.html">AI Project Estimator</a>
+                    <a href="project-viewer.html">3D Visualization</a>
+                    <a href="blog.html">Industry Insights</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>📞 (509) 308-6489</p>
+                    <p>📧 info@mhc-gc.com</p>
+                    <p>📍 Pasco, Washington</p>
+                    <p>Service Area: WA, OR, ID</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 MH Construction. All rights reserved. Veteran Owned & Operated.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- AI Chatbot -->
+    <div id="chatbot-container"></div>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/chatbot.js"></script>
+    <script src="js/projects.js"></script>
+</body>
+</html>

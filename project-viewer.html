@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Project Viewer - MH Construction</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Saira:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/project-viewer.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h1>MH Construction</h1>
+                <span class="veteran-badge">Veteran Owned</span>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="projects.html" class="nav-link">Projects</a>
+                <a href="estimator.html" class="nav-link">Get Estimate</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Viewer Header -->
+    <section class="viewer-header">
+        <div class="container">
+            <h1>🏗️ Interactive 3D Project Viewer</h1>
+            <p>Explore our completed projects in immersive 3D. Click on features to learn about construction details.</p>
+        </div>
+    </section>
+
+    <!-- Project Selection -->
+    <section class="project-selection">
+        <div class="container">
+            <h2>Select a Project to Explore</h2>
+            <div class="project-cards">
+                <div class="project-card" data-project="commercial-office">
+                    <div class="project-image">
+                        <div class="project-icon">🏢</div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Pacific Northwest Office Complex</h3>
+                        <p>25,000 sq ft commercial building with modern amenities</p>
+                        <div class="project-details">
+                            <span>📍 Pasco, WA</span>
+                            <span>📅 Completed 2023</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-project="medical-center">
+                    <div class="project-image">
+                        <div class="project-icon">🏥</div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Columbia Medical Center</h3>
+                        <p>State-of-the-art healthcare facility with specialized equipment</p>
+                        <div class="project-details">
+                            <span>📍 Kennewick, WA</span>
+                            <span>📅 Completed 2024</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-project="church-sanctuary">
+                    <div class="project-image">
+                        <div class="project-icon">⛪</div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Trinity Community Church</h3>
+                        <p>Beautiful sanctuary with modern acoustics and lighting</p>
+                        <div class="project-details">
+                            <span>📍 Richland, WA</span>
+                            <span>📅 Completed 2023</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-project="winery-facility">
+                    <div class="project-image">
+                        <div class="project-icon">🍷</div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Columbia Valley Winery</h3>
+                        <p>Award-winning winery with tasting room and production facility</p>
+                        <div class="project-details">
+                            <span>📍 Walla Walla, WA</span>
+                            <span>📅 Completed 2024</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3D Viewer Container -->
+    <section class="viewer-container" id="viewerContainer" style="display: none;">
+        <div class="viewer-header-bar">
+            <div class="project-title">
+                <h3 id="currentProjectTitle">Loading Project...</h3>
+                <button class="close-viewer" onclick="closeViewer()">✕</button>
+            </div>
+            <div class="viewer-controls">
+                <button class="control-btn" id="resetView" title="Reset View">🎯</button>
+                <button class="control-btn" id="fullscreen" title="Fullscreen">⛶</button>
+                <button class="control-btn" id="shareProject" title="Share">📤</button>
+            </div>
+        </div>
+
+        <!-- 3D Canvas -->
+        <div class="viewer-main">
+            <div class="canvas-container">
+                <canvas id="projectCanvas"></canvas>
+                <div class="loading-3d" id="loading3D">
+                    <div class="loading-spinner"></div>
+                    <p>Loading 3D Model...</p>
+                </div>
+            </div>
+
+            <!-- Feature Information Panel -->
+            <div class="feature-panel" id="featurePanel" style="display: none;">
+                <div class="panel-header">
+                    <h4 id="featureTitle">Feature Information</h4>
+                    <button class="close-panel" onclick="closeFeaturePanel()">✕</button>
+                </div>
+                <div class="panel-content">
+                    <div id="featureImage" class="feature-image"></div>
+                    <div id="featureDescription" class="feature-description">
+                        <p>Click on building features to learn more about construction details and materials.</p>
+                    </div>
+                    <div id="featureSpecs" class="feature-specs"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Viewer Instructions -->
+        <div class="viewer-instructions">
+            <div class="instruction">
+                <span class="instruction-icon">🖱️</span>
+                <span>Click & Drag to rotate view</span>
+            </div>
+            <div class="instruction">
+                <span class="instruction-icon">🔍</span>
+                <span>Scroll to zoom in/out</span>
+            </div>
+            <div class="instruction">
+                <span class="instruction-icon">👆</span>
+                <span>Click features to learn more</span>
+            </div>
+        </div>
+
+        <!-- Project Details Sidebar -->
+        <div class="project-sidebar">
+            <div class="sidebar-section">
+                <h4>Project Overview</h4>
+                <div id="projectOverview">
+                    <div class="overview-item">
+                        <span class="item-label">Size:</span>
+                        <span class="item-value" id="projectSize">-</span>
+                    </div>
+                    <div class="overview-item">
+                        <span class="item-label">Duration:</span>
+                        <span class="item-value" id="projectDuration">-</span>
+                    </div>
+                    <div class="overview-item">
+                        <span class="item-label">Type:</span>
+                        <span class="item-value" id="projectType">-</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h4>Key Features</h4>
+                <div id="keyFeatures" class="features-list">
+                    <!-- Features will be populated dynamically -->
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h4>Construction Highlights</h4>
+                <div id="constructionHighlights" class="highlights-list">
+                    <!-- Highlights will be populated dynamically -->
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h4>Interested in Similar Project?</h4>
+                <a href="estimator.html" class="btn btn-primary">Get Your Estimate</a>
+                <a href="contact.html" class="btn btn-secondary">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <!-- ...existing code... -->
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/project-viewer.js"></script>
+    <script src="js/three-setup.js"></script>
+</body>
+</html>

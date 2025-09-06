@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact MH Construction - Schedule Your Consultation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Saira:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/chatbot.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h1>MH Construction</h1>
+                <span class="veteran-badge">Veteran Owned</span>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="projects.html" class="nav-link">Projects</a>
+                <a href="estimator.html" class="nav-link">Get Estimate</a>
+                <a href="contact.html" class="nav-link active">Contact</a>
+            </div>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contact Hero -->
+    <section class="contact-hero">
+        <div class="container">
+            <h1>Get Started Today</h1>
+            <p>Ready to bring your construction vision to life? Contact our veteran-owned team for expert guidance and transparent pricing.</p>
+        </div>
+    </section>
+
+    <!-- Contact Options -->
+    <section class="contact-options">
+        <div class="container">
+            <div class="contact-methods">
+                <div class="contact-method">
+                    <div class="method-icon">📞</div>
+                    <h3>Call Us</h3>
+                    <p><strong>(509) 308-6489</strong></p>
+                    <p>Monday - Friday: 7:00 AM - 6:00 PM</p>
+                    <p>Saturday: 8:00 AM - 4:00 PM</p>
+                </div>
+                <div class="contact-method">
+                    <div class="method-icon">📧</div>
+                    <h3>Email Us</h3>
+                    <p><strong>info@mhc-gc.com</strong></p>
+                    <p>We respond within 4 hours during business days</p>
+                </div>
+                <div class="contact-method">
+                    <div class="method-icon">📍</div>
+                    <h3>Visit Us</h3>
+                    <p><strong>Pasco, Washington</strong></p>
+                    <p>Serving WA, OR, and ID</p>
+                    <p>On-site consultations available</p>
+                </div>
+                <div class="contact-method">
+                    <div class="method-icon">💬</div>
+                    <h3>Chat Now</h3>
+                    <p><strong>AI Assistant Available 24/7</strong></p>
+                    <button onclick="openChatbot()" class="btn btn-secondary">Start Chat</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Forms -->
+    <section class="contact-forms">
+        <div class="container">
+            <div class="forms-grid">
+                <!-- Consultation Request -->
+                <div class="form-container">
+                    <h2>Schedule Consultation</h2>
+                    <p>Get expert advice and project guidance from our veteran-owned team.</p>
+                    <form class="contact-form" id="consultationForm">
+                        <div class="form-group">
+                            <label for="consult-name">Full Name *</label>
+                            <input type="text" id="consult-name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="consult-email">Email Address *</label>
+                            <input type="email" id="consult-email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="consult-phone">Phone Number *</label>
+                            <input type="tel" id="consult-phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="consult-company">Company Name</label>
+                            <input type="text" id="consult-company" name="company">
+                        </div>
+                        <div class="form-group">
+                            <label for="project-type">Project Type *</label>
+                            <select id="project-type" name="projectType" required>
+                                <option value="">Select Project Type</option>
+                                <option value="commercial">Commercial Building</option>
+                                <option value="medical">Medical Facility</option>
+                                <option value="religious">Religious Building</option>
+                                <option value="industrial">Industrial Project</option>
+                                <option value="winery">Winery</option>
+                                <option value="custom">Custom Project</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="project-timeline">Preferred Timeline</label>
+                            <select id="project-timeline" name="timeline">
+                                <option value="">Select Timeline</option>
+                                <option value="immediate">Ready to start immediately</option>
+                                <option value="1-3months">1-3 months</option>
+                                <option value="3-6months">3-6 months</option>
+                                <option value="6months+">6+ months</option>
+                                <option value="planning">Still planning</option>
+                            </select>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="project-description">Project Description</label>
+                            <textarea id="project-description" name="description" rows="4" placeholder="Tell us about your project vision, requirements, and any specific needs..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Schedule Consultation</button>
+                    </form>
+                </div>
+
+                <!-- General Contact -->
+                <div class="form-container">
+                    <h2>General Inquiry</h2>
+                    <p>Have questions about our services or need more information?</p>
+                    <form class="contact-form" id="generalForm">
+                        <div class="form-group">
+                            <label for="general-name">Full Name *</label>
+                            <input type="text" id="general-name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="general-email">Email Address *</label>
+                            <input type="email" id="general-email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="general-phone">Phone Number</label>
+                            <input type="tel" id="general-phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="inquiry-type">Inquiry Type</label>
+                            <select id="inquiry-type" name="inquiryType">
+                                <option value="">Select Type</option>
+                                <option value="services">Services Information</option>
+                                <option value="pricing">Pricing Questions</option>
+                                <option value="portfolio">Project Examples</option>
+                                <option value="partnership">Partnership Opportunities</option>
+                                <option value="careers">Career Opportunities</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="general-message">Message *</label>
+                            <textarea id="general-message" name="message" rows="5" placeholder="How can we help you?" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-secondary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Actions -->
+    <section class="quick-actions-section">
+        <div class="container">
+            <h2 class="section-title">Get Started Quickly</h2>
+            <div class="quick-actions-grid">
+                <div class="action-card">
+                    <div class="action-icon">🤖</div>
+                    <h3>AI Estimate</h3>
+                    <p>Get instant project pricing in 5 minutes</p>
+                    <a href="estimator.html" class="btn btn-gold">Start Estimate</a>
+                </div>
+                <div class="action-card">
+                    <div class="action-icon">🏗️</div>
+                    <h3>View Projects</h3>
+                    <p>Explore our work in immersive 3D</p>
+                    <a href="project-viewer.html" class="btn btn-gold">View 3D Projects</a>
+                </div>
+                <div class="action-card">
+                    <div class="action-icon">📋</div>
+                    <h3>Services Overview</h3>
+                    <p>Learn about our construction specialties</p>
+                    <a href="services.html" class="btn btn-gold">View Services</a>
+                </div>
+                <div class="action-card">
+                    <div class="action-icon">🏆</div>
+                    <h3>Our Story</h3>
+                    <p>Discover our veteran-owned heritage</p>
+                    <a href="about.html" class="btn btn-gold">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>MH Construction</h3>
+                    <p>Revolutionary construction excellence with military precision and innovative technology.</p>
+                    <div class="veteran-badge">Veteran Owned & Operated</div>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <a href="services.html">Commercial Construction</a>
+                    <a href="services.html">Medical Facilities</a>
+                    <a href="services.html">Religious Buildings</a>
+                    <a href="services.html">Industrial Projects</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Innovation</h4>
+                    <a href="estimator.html">AI Project Estimator</a>
+                    <a href="project-viewer.html">3D Visualization</a>
+                    <a href="blog.html">Industry Insights</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>📞 (509) 308-6489</p>
+                    <p>📧 info@mhc-gc.com</p>
+                    <p>📍 Pasco, Washington</p>
+                    <p>Service Area: WA, OR, ID</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 MH Construction. All rights reserved. Veteran Owned & Operated.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- AI Chatbot -->
+    <div id="chatbot-container"></div>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/chatbot.js"></script>
+    <script src="js/contact.js"></script>
+</body>
+</html>

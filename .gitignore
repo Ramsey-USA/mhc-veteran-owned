@@ -1,0 +1,80 @@
+# Node modules
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build outputs
+dist/
+build/
+*.min.js
+*.min.css
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Firebase
+.firebase/
+firebase-debug.log*
+.firebaserc
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Logs
+logs/
+*.log
+
+# Cache
+.cache/
+.tmp/
+.temp/
+
+# Coverage reports
+coverage/
+*.lcov
+
+# Dependencies
+package-lock.json
+yarn.lock
+
+# Local development
+local/
+dev/
+
+# Backup files
+*.backup
+*.bak
+*.old
+
+# Firebase hosting cache
+.firebase/
+
+# API keys (if stored in files)
+keys/
+secrets/
+config/local.js
+
+# Generated files
+sitemap.xml
+robots.txt
+
+# Testing
+test-results/
+playwright-report/
+
+# Documentation builds
+docs/_build/

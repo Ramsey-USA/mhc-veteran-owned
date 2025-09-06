@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Project Estimator - MH Construction</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Saira:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/estimator.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h1>MH Construction</h1>
+                <span class="veteran-badge">Veteran Owned</span>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="projects.html" class="nav-link">Projects</a>
+                <a href="estimator.html" class="nav-link active">Get Estimate</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Estimator Header -->
+    <section class="estimator-header">
+        <div class="container">
+            <h1>🤖 AI Project Estimator</h1>
+            <p>Get transparent, instant project estimates through our intelligent 5-step wizard</p>
+            <div class="estimator-benefits">
+                <div class="benefit">✅ Instant Results</div>
+                <div class="benefit">✅ Transparent Pricing</div>
+                <div class="benefit">✅ No Hidden Costs</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Progress Bar -->
+    <div class="progress-container">
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <div class="progress-steps">
+            <div class="step active" data-step="1">
+                <span class="step-number">1</span>
+                <span class="step-label">Project Type</span>
+            </div>
+            <div class="step" data-step="2">
+                <span class="step-number">2</span>
+                <span class="step-label">Location</span>
+            </div>
+            <div class="step" data-step="3">
+                <span class="step-number">3</span>
+                <span class="step-label">Details</span>
+            </div>
+            <div class="step" data-step="4">
+                <span class="step-number">4</span>
+                <span class="step-label">Timeline</span>
+            </div>
+            <div class="step" data-step="5">
+                <span class="step-number">5</span>
+                <span class="step-label">Results</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Estimator Form -->
+    <section class="estimator-form">
+        <div class="container">
+            <form id="estimatorForm">
+                
+                <!-- Step 1: Project Type -->
+                <div class="form-step active" data-step="1">
+                    <h2>What type of project are you planning?</h2>
+                    <div class="project-types">
+                        <div class="project-type" data-type="commercial">
+                            <div class="type-icon">🏢</div>
+                            <h3>Commercial</h3>
+                            <p>Office buildings, retail spaces, commercial complexes</p>
+                        </div>
+                        <div class="project-type" data-type="medical">
+                            <div class="type-icon">🏥</div>
+                            <h3>Medical Facilities</h3>
+                            <p>Healthcare centers, medical offices, clinics</p>
+                        </div>
+                        <div class="project-type" data-type="religious">
+                            <div class="type-icon">⛪</div>
+                            <h3>Religious Buildings</h3>
+                            <p>Churches, worship centers, community spaces</p>
+                        </div>
+                        <div class="project-type" data-type="industrial">
+                            <div class="type-icon">🏭</div>
+                            <h3>Industrial</h3>
+                            <p>Manufacturing, warehouses, industrial facilities</p>
+                        </div>
+                        <div class="project-type" data-type="winery">
+                            <div class="type-icon">🍷</div>
+                            <h3>Winery</h3>
+                            <p>Wineries, tasting rooms, vineyard facilities</p>
+                        </div>
+                        <div class="project-type" data-type="custom">
+                            <div class="type-icon">🏗️</div>
+                            <h3>Custom Project</h3>
+                            <p>Unique construction solutions</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2: Location -->
+                <div class="form-step" data-step="2">
+                    <h2>Where is your project located?</h2>
+                    <div class="location-input">
+                        <label for="projectAddress">Project Address</label>
+                        <input type="text" id="projectAddress" placeholder="Enter project address or city">
+                        <div id="mapContainer" class="map-container"></div>
+                        <div class="location-factors">
+                            <h4>Regional Factors Affecting Cost:</h4>
+                            <div id="locationFactors">
+                                <div class="factor">📍 Local building codes and permits</div>
+                                <div class="factor">🚛 Material delivery costs</div>
+                                <div class="factor">👷 Local labor availability</div>
+                                <div class="factor">🌡️ Climate considerations</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3: Project Details -->
+                <div class="form-step" data-step="3">
+                    <h2>Tell us about your project details</h2>
+                    <div class="project-details">
+                        <div class="detail-group">
+                            <label for="squareFootage">Square Footage</label>
+                            <input type="number" id="squareFootage" placeholder="e.g., 5000" min="100" max="1000000">
+                            <span class="input-suffix">sq ft</span>
+                        </div>
+                        <div class="detail-group">
+                            <label for="stories">Number of Stories</label>
+                            <select id="stories">
+                                <option value="1">1 Story</option>
+                                <option value="2">2 Stories</option>
+                                <option value="3">3 Stories</option>
+                                <option value="4+">4+ Stories</option>
+                            </select>
+                        </div>
+                        <div class="detail-group">
+                            <label for="constructionType">Construction Type</label>
+                            <select id="constructionType">
+                                <option value="standard">Standard Construction</option>
+                                <option value="premium">Premium Finishes</option>
+                                <option value="luxury">Luxury/High-End</option>
+                                <option value="basic">Basic/Value</option>
+                            </select>
+                        </div>
+                        <div class="detail-group full-width">
+                            <label for="specialRequirements">Special Requirements</label>
+                            <textarea id="specialRequirements" placeholder="Any special features, accessibility needs, or unique requirements?"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 4: Timeline -->
+                <div class="form-step" data-step="4">
+                    <h2>When would you like to start construction?</h2>
+                    <div class="timeline-options">
+                        <div class="timeline-option" data-timeline="immediate">
+                            <div class="timeline-icon">🚀</div>
+                            <h3>Immediate</h3>
+                            <p>Ready to start within 30 days</p>
+                            <span class="timeline-note">Premium pricing for rush scheduling</span>
+                        </div>
+                        <div class="timeline-option" data-timeline="1-3months">
+                            <div class="timeline-icon">⏰</div>
+                            <h3>1-3 Months</h3>
+                            <p>Start within the next quarter</p>
+                            <span class="timeline-note">Standard pricing</span>
+                        </div>
+                        <div class="timeline-option" data-timeline="3-6months">
+                            <div class="timeline-icon">📅</div>
+                            <h3>3-6 Months</h3>
+                            <p>Planning ahead for optimal scheduling</p>
+                            <span class="timeline-note">Best pricing availability</span>
+                        </div>
+                        <div class="timeline-option" data-timeline="6months+">
+                            <div class="timeline-icon">🎯</div>
+                            <h3>6+ Months</h3>
+                            <p>Long-term planning</p>
+                            <span class="timeline-note">Early bird discounts available</span>
+                        </div>
+                    </div>
+                    <div class="contact-info">
+                        <h3>Your Contact Information</h3>
+                        <div class="contact-fields">
+                            <input type="text" id="clientName" placeholder="Full Name" required>
+                            <input type="email" id="clientEmail" placeholder="Email Address" required>
+                            <input type="tel" id="clientPhone" placeholder="Phone Number" required>
+                            <input type="text" id="companyName" placeholder="Company Name (Optional)">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 5: Results -->
+                <div class="form-step" data-step="5">
+                    <div id="estimateResults" class="estimate-results">
+                        <div class="loading-estimate">
+                            <div class="ai-thinking">
+                                <div class="thinking-icon">🤖</div>
+                                <h3>AI Calculating Your Estimate...</h3>
+                                <div class="loading-bar"></div>
+                                <p>Analyzing project requirements, location factors, and market conditions</p>
+                            </div>
+                        </div>
+                        
+                        <div id="finalResults" class="final-results" style="display: none;">
+                            <div class="estimate-header">
+                                <h2>Your Project Estimate</h2>
+                                <div class="veteran-guarantee">
+                                    <span>🏆 Veteran-Owned Guarantee</span>
+                                    <p>Military precision in every estimate</p>
+                                </div>
+                            </div>
+                            
+                            <div class="estimate-breakdown">
+                                <div class="cost-range">
+                                    <h3>Estimated Cost Range</h3>
+                                    <div class="cost-display">
+                                        <span class="cost-low" id="costLow">$0</span>
+                                        <span class="cost-separator">-</span>
+                                        <span class="cost-high" id="costHigh">$0</span>
+                                    </div>
+                                    <p class="cost-note">Based on current market conditions and project specifications</p>
+                                </div>
+                                
+                                <div class="breakdown-details">
+                                    <h4>Cost Breakdown</h4>
+                                    <div class="breakdown-item">
+                                        <span>Materials & Supplies</span>
+                                        <span id="materialsCost">$0</span>
+                                    </div>
+                                    <div class="breakdown-item">
+                                        <span>Labor & Installation</span>
+                                        <span id="laborCost">$0</span>
+                                    </div>
+                                    <div class="breakdown-item">
+                                        <span>Permits & Fees</span>
+                                        <span id="permitsCost">$0</span>
+                                    </div>
+                                    <div class="breakdown-item">
+                                        <span>Project Management</span>
+                                        <span id="managementCost">$0</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="timeline-estimate">
+                                    <h4>Estimated Timeline</h4>
+                                    <div class="timeline-display">
+                                        <span id="estimatedTimeline">12-16 weeks</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="next-steps">
+                                <h3>Next Steps</h3>
+                                <div class="steps-list">
+                                    <div class="next-step">
+                                        <span class="step-icon">📞</span>
+                                        <div>
+                                            <h4>Consultation Call</h4>
+                                            <p>Schedule a detailed discussion about your project</p>
+                                        </div>
+                                    </div>
+                                    <div class="next-step">
+                                        <span class="step-icon">📐</span>
+                                        <div>
+                                            <h4>Site Assessment</h4>
+                                            <p>On-site evaluation for precise planning</p>
+                                        </div>
+                                    </div>
+                                    <div class="next-step">
+                                        <span class="step-icon">📋</span>
+                                        <div>
+                                            <h4>Detailed Proposal</h4>
+                                            <p>Comprehensive project plan and final pricing</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="cta-buttons">
+                                    <button type="button" class="btn btn-primary" onclick="scheduleConsultation()">
+                                        Schedule Consultation
+                                    </button>
+                                    <button type="button" class="btn btn-secondary" onclick="downloadEstimate()">
+                                        Download Estimate
+                                    </button>
+                                    <button type="button" class="btn btn-gold" onclick="exploreProjects()">
+                                        View Similar Projects
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation Buttons -->
+                <div class="form-navigation">
+                    <button type="button" id="prevBtn" class="btn btn-secondary" onclick="previousStep()">Previous</button>
+                    <button type="button" id="nextBtn" class="btn btn-primary" onclick="nextStep()">Next</button>
+                    <button type="submit" id="submitBtn" class="btn btn-primary" style="display: none;">Get My Estimate</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <!-- ...existing code... -->
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/estimator.js"></script>
+    <script src="js/firebase-config.js"></script>
+</body>
+</html>
