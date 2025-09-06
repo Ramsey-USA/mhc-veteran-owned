@@ -26,8 +26,13 @@
                 <a href="about.html" class="nav-link">About</a>
                 <a href="services.html" class="nav-link">Services</a>
                 <a href="projects.html" class="nav-link">Projects</a>
-                <a href="estimator.html" class="nav-link active">Get Estimate</a>
+                <a href="estimator.html" class="nav-link active cta-link">Get Estimate</a>
                 <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
         </div>
     </nav>
@@ -323,12 +328,103 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <!-- ...existing code... -->
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>MH Construction</h3>
+                    <p>Revolutionary construction excellence with military precision and innovative technology.</p>
+                    <div class="veteran-badge">Veteran Owned & Operated</div>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <a href="services.html">Commercial Construction</a>
+                    <a href="services.html">Medical Facilities</a>
+                    <a href="services.html">Religious Buildings</a>
+                    <a href="services.html">Industrial Projects</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Innovation</h4>
+                    <a href="estimator.html">AI Project Estimator</a>
+                    <a href="project-viewer.html">3D Visualization</a>
+                    <a href="projects.html">Project Portfolio</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>📞 (509) 308-6489</p>
+                    <p>📧 info@mhc-gc.com</p>
+                    <p>📍 Pasco, Washington</p>
+                    <p>Service Area: WA, OR, ID</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 MH Construction. All rights reserved. Veteran Owned & Operated.</p>
+            </div>
+        </div>
     </footer>
 
+    <!-- AI Chatbot -->
+    <div id="chatbot-container"></div>
+
+    <!-- Success/Error Notification Container -->
+    <div id="notification-container"></div>
+
     <!-- Scripts -->
+    <script>
+        // Debug logging
+        console.log('Estimator page loaded');
+        
+        // Fallback visibility fix
+        function ensureVisibility() {
+            const form = document.getElementById('estimatorForm');
+            const firstStep = document.querySelector('.form-step[data-step="1"]');
+            const navigation = document.querySelector('.form-navigation');
+            
+            if (form) form.style.display = 'block';
+            if (firstStep) {
+                firstStep.style.display = 'block';
+                firstStep.classList.add('active');
+            }
+            if (navigation) navigation.style.display = 'flex';
+            
+            console.log('Visibility ensured for key elements');
+        }
+        
+        // Run immediately and after DOM load
+        ensureVisibility();
+        document.addEventListener('DOMContentLoaded', ensureVisibility);
+        
+        // Ensure global functions are available
+        window.nextStep = function() {
+            console.log('NextStep called, estimator:', window.estimator);
+            if (window.estimator) {
+                window.estimator.nextStep();
+            } else {
+                console.error('Estimator not initialized');
+            }
+        };
+
+        window.previousStep = function() {
+            console.log('PreviousStep called, estimator:', window.estimator);
+            if (window.estimator) {
+                window.estimator.previousStep();
+            } else {
+                console.error('Estimator not initialized');
+            }
+        };
+        
+        // Handle page refresh
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                ensureVisibility();
+                if (window.estimator && window.estimator.ensureVisibility) {
+                    window.estimator.ensureVisibility();
+                }
+            }, 100);
+        });
+    </script>
     <script src="js/main.js"></script>
     <script src="js/estimator.js"></script>
+    <script src="js/chatbot.js"></script>
     <script src="js/firebase-config.js"></script>
 </body>
 </html>
